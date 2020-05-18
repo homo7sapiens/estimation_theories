@@ -9,7 +9,7 @@ points = [1,2,3,5,8,13,20]
 class Employee:
     #у каждого сотрудника есть свойство - насколько качественно он оценивает задачи разработки и тестирования
     def __init__(self, devtasks_accuracy, testtask_accuracy):
-        self.devtasks_accuracy = devtasks_accuracy # проценты, насколько человек отклоняется от реальной оценки задачи
+        self.devtasks_accuracy = devtasks_accuracy # проценты, насколько человек может максимально отклониться от реальной оценки
         self.testtask_accuracy = testtask_accuracy
 
     def get_estimate(self, expected_estimate):
