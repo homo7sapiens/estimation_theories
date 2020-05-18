@@ -98,6 +98,7 @@ def print_simulation_result(simulation_result, filepath):
         for row in simulation_result:
             employee_writer.writerow(row)
 
-simulation_result = simulate(1000)
-print_simulation_result(simulation_result, 'simulation.csv')
+if __name__ == '__main__':
+    simulation_result = simulate(1000)
+    print_simulation_result(simulation_result, 'simulation.csv')
 
