@@ -12,7 +12,7 @@ class Employee:
         self.devtasks_accuracy = devtasks_accuracy # проценты, насколько человек может максимально отклониться от реальной оценки
         self.testtask_accuracy = testtask_accuracy
 
-    def get_estimate(self, expected_estimate):
+    def estimate(self, expected_estimate):
         devtask_estimation = expected_estimate.devtask_estimation * ( 1 + random.uniform(-self.devtasks_accuracy, self.devtasks_accuracy))
         testtask_estimation = expected_estimate.testtask_estimation * (1 + random.uniform(-self.testtask_accuracy, self.testtask_accuracy))
         return Estimation(devtask_estimation, testtask_estimation)
@@ -76,8 +76,8 @@ def simulate(simulations_count):
 def simulate_once(developer, tester, common_strategy, separate_avg_strategy, separate_max_strategy):
     random.seed(datetime.now())
     expected_estimations = [get_random_estimations() for i in range(sprint_tasks_size)]
-    actual_developer_estimations =  [developer.get_estimate(expected_estimation) for expected_estimation in expected_estimations]
-    actual_tester_estimations = [tester.get_estimate(expected_estimation) for expected_estimation in expected_estimations]
+    actual_developer_estimations =  [developer.estimate(expected_estimation) for expected_estimation in expected_estimations]
+    actual_tester_estimations = [tester.estimate(expected_estimation) for expected_estimation in expected_estimations]
     
     total_common = common_strategy.get_total_diff(expected_estimations, actual_developer_estimations, actual_tester_estimations)
     total_max = separate_avg_strategy.get_total_diff(expected_estimations, actual_developer_estimations, actual_tester_estimations)
