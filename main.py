@@ -41,7 +41,7 @@ class CommonEstimationStrategy(EstimationStrategy):
     def get_diff(self, expected_estimation, actual_developer_estimation, actual_tester_estimation):
         dev_diff = expected_estimation.get_summ() - actual_developer_estimation.get_summ()
         test_diff = expected_estimation.get_summ() - actual_tester_estimation.get_summ()
-        return dev_diff + test_diff
+        return (dev_diff + test_diff)/2
 
 class SeparateGetMaxEstimationStrategy(EstimationStrategy):
     def get_diff(self, expected_estimation, actual_developer_estimation, actual_tester_estimation):
