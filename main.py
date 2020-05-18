@@ -13,8 +13,8 @@ class Employee:
         self.testtask_accuracy = testtask_accuracy
 
     def get_estimate(self, expected_estimate):
-        devtask_estimation = expected_estimate.devtask_estimation + random.uniform(-self.devtasks_accuracy, self.devtasks_accuracy)
-        testtask_estimation = expected_estimate.testtask_estimation + random.uniform(-self.testtask_accuracy, self.testtask_accuracy)
+        devtask_estimation = expected_estimate.devtask_estimation * ( 1 + random.uniform(-self.devtasks_accuracy, self.devtasks_accuracy))
+        testtask_estimation = expected_estimate.testtask_estimation * (1 + random.uniform(-self.testtask_accuracy, self.testtask_accuracy))
         return Estimation(devtask_estimation, testtask_estimation)
 
 class Estimation:
